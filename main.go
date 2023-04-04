@@ -1,12 +1,33 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	_ "project/createDeployment"
-	_ "project/createNamespace"
-	_ "project/createService"
+	"log"
+	"os"
 )
 
+type deployStruct struct {
+	name         string
+	namespace    string
+	replicas     string
+	image        string
+	imageVersion string
+}
+
 func main() {
-	fmt.Println("start go prog")
+	ns := bufio.NewReader(os.Stdin)
+
+	fmt.Println("이름 입력")
+	dname, err := ns.ReadString('\n')
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	namespace := deployStruct{
+		name: dname,
+	}
+
+	fmt.Println(namespace.name)
 }
