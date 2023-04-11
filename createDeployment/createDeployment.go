@@ -1,6 +1,6 @@
 package createDeployment
 
-type deployStruct struct {
+type DeployStruct struct {
 	name         string
 	namespace    string
 	replicas     string
@@ -9,4 +9,17 @@ type deployStruct struct {
 }
 
 // Deployment 구조 생성
-func (d deployStruct) CreateDeployment(gname string) deployStruct
+func CreateDeploymentStruct(name, namespace, replicas, image, imageVersion string) *DeployStruct {
+	return &DeployStruct{
+		name:         name,
+		namespace:    namespace,
+		replicas:     replicas,
+		image:        image,
+		imageVersion: imageVersion,
+	}
+}
+
+// Deployment yaml 생성
+func CreateDeployment(CreateDeploymentStruct func()) {
+
+}
