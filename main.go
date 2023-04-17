@@ -7,12 +7,18 @@ import (
 )
 
 func act(cd st.CreateDeployment) {
-	st.CreateDeployment()
+	cd.CreateDeployment()
 }
 
 func main() {
 
-	deployTest := st.Deployment_st{"test", "tesetNamespace", 15, "nginx", "latest"}
+	deployTest := st.Deployment_st{
+		name:         "test",
+		namespace:    "tesetNamespace",
+		replcas:      15,
+		image:        "nginx",
+		imageVersion: "latest",
+	}
 
 	act(deployTest)
 
