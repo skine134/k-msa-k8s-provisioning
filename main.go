@@ -1,33 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
+
+	st "github.com/jjsair0412/embodiment"
 )
 
-type deployStruct struct {
-	name         string
-	namespace    string
-	replicas     string
-	image        string
-	imageVersion string
+func act(cd st.CreateDeployment) {
+	st.CreateDeployment()
 }
 
 func main() {
-	ns := bufio.NewReader(os.Stdin)
 
-	fmt.Println("이름 입력")
-	dname, err := ns.ReadString('\n')
+	deployTest := st.Deployment_st{"test", "tesetNamespace", 15, "nginx", "latest"}
 
-	if err != nil {
-		log.Fatal(err)
-	}
+	act(deployTest)
 
-	namespace := deployStruct{
-		name: dname,
-	}
-
-	fmt.Println(namespace.name)
+	fmt.Println("success!")
 }
